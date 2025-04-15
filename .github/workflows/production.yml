@@ -1,9 +1,9 @@
-name: Development
+name: Production
 
 on:
   push:
     branches:
-      - development
+      - production
 jobs:
   check:
     name: lint, test, and type check
@@ -35,9 +35,6 @@ jobs:
       
       - name: Type check
         run: pnpm build
-      
-      # - name: Test
-      #   run: pnpm test
 
   deploy:
     needs: check
@@ -65,13 +62,13 @@ jobs:
 
       - name: Set CLOUDFLARE_ENV
         run: |
-          echo "CLOUDFLARE_ENV=development" >> $GITHUB_ENV
-          echo "VITE_CLERK_PUBLISHABLE_KEY=${{ vars.CLERK_PUBLISHABLE_KEY_DEVELOPMENT }}" >> $GITHUB_ENV
+          echo "CLOUDFLARE_ENV=production" >> $GITHUB_ENV
+          echo "VITE_CLERK_PUBLISHABLE_KEY=${{ vars.CLERK_PUBLISHABLE_KEY_PRODUCTION }}" >> $GITHUB_ENV
       
       - name: Build
         run: pnpm build
 
-      - name: worker deployment (development)
+      - name: worker deployment (production)
         id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
