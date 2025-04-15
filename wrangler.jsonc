@@ -1,0 +1,28 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "kira",
+  "compatibility_date": "2025-04-01",
+  "assets": {
+    "not_found_handling": "single-page-application"
+  },
+  "env": {
+    "production": {
+      "name": "kira-production",
+      "routes": [
+        {
+          "pattern": "kira.vvonkledge.com",
+          "custom_domain": true
+        }
+      ]
+    },
+    "development": {
+      "name": "kira-development",
+      "routes": [
+        {
+          "pattern": "development-kira.vvonkledge.com",
+          "custom_domain": true
+        }
+      ]
+    }
+  }
+}
