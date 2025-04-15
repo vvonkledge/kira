@@ -62,3 +62,47 @@ Here's a sample of the current configuration:
   }
 }
 ```
+
+# Kira
+
+## Authentication with Clerk
+
+This project uses [Clerk](https://clerk.com/) for authentication and user management.
+
+### Setup Instructions
+
+1. Create a Clerk account at [https://clerk.com](https://clerk.com)
+2. Create a new Clerk application
+3. Copy your API keys from the Clerk dashboard
+4. Create a `.env` file in the root of your project (you can copy from `.env.example`)
+5. Add your Clerk API keys to the `.env` file:
+   ```
+   VITE_CLERK_PUBLISHABLE_KEY=your_publishable_key_here
+   CLERK_SECRET_KEY=your_secret_key_here
+   ```
+
+### Authentication Routes
+
+- `/sign-in` - Sign in page
+- `/sign-up` - Sign up page
+- `/dashboard` - Protected route (requires authentication)
+
+### Protected Routes
+
+To create a protected route, wrap your component with `SignedIn` and `SignedOut` components:
+
+```tsx
+<Route
+  path="/protected-route"
+  element={
+    <>
+      <SignedIn>
+        <YourProtectedComponent />
+      </SignedIn>
+      <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
+    </>
+  }
+/>
+```
