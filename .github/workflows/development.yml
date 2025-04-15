@@ -63,13 +63,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build
-        run: pnpm build
-
       - name: Set CLOUDFLARE_ENV
         run: |
           echo "CLOUDFLARE_ENV=development" >> $GITHUB_ENV
       
+      - name: Build
+        run: pnpm build
+
       - name: worker deployment (development)
         id: deploy
         uses: cloudflare/wrangler-action@v3
