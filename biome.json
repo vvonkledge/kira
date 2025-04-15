@@ -30,8 +30,18 @@
   "javascript": {
     "formatter": {
       "quoteStyle": "double",
-      "trailingComma": "all",
+      "trailingCommas": "es5",
       "semicolons": "always"
     }
+  },
+  "files": {
+    "ignore": [
+      "node_modules",
+      "dist",
+      "tsconfig.json",
+      "vite.config.ts",
+      "tsconfig.node.json",
+      "tsconfig.app.json"
+    ]
   }
-} 
+}
